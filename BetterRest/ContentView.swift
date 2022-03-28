@@ -10,12 +10,20 @@ import SwiftUI
 
 struct ContentView: View {
     // MARK: - Property Wrappers
-    @State private var wakeUp: Date = .now
+    @State private var wakeUp: Date = defaultWakeTime
     @State private var sleepAmount: Double = 8.0
     @State private var coffeeAmount: Int = 1
     @State private var alertTitle: String = ""
     @State private var alertMessage: String = ""
     @State private var showingAlert: Bool = false
+    
+    // MARK: - Properties
+    static var defaultWakeTime: Date {
+        var components: DateComponents = .init()
+        components.hour = 7
+        components.minute = 0
+        return Calendar.current.date(from: components) ?? .now
+    }
     
     // MARK: - UI Components
     var body: some View {
