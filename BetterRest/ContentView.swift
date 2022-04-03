@@ -41,15 +41,14 @@ struct ContentView: View {
                 Section("Daily coffee intake") {
                     Stepper("\(coffeeAmount) \(coffeeAmount == 1 ? "cup" : "cups")", value: $coffeeAmount, in: 1...20)
                 }
+                
+                VStack {
+                    Text("Your ideal sleep time is: \(alertMessage)")
+                }
             }
             .navigationTitle("BetterRest")
             .toolbar {
                 Button("Calculate", action: calculateBedTime)
-            }
-            .alert(alertTitle, isPresented: $showingAlert) {
-                Button("OK") {}
-            } message: {
-                Text(alertMessage)
             }
         }
     }
